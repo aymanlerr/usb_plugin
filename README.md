@@ -45,7 +45,7 @@ We can use Stream to check realtime USB device is connected follow by this 'stat
     final _usbPlugin = UsbPlugin();
     ...
 
-    _usbPlugin.stateUsbStream().listen( (String data) {
+    _usbPlugin.stateUsbStream().listen( (data) {
       print('The state of USB Connected: $data'); // 0-false or 1-true
     });
 
