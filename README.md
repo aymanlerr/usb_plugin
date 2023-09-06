@@ -1,15 +1,64 @@
+
 # usb_plugin
 
-A new Flutter plugin.
+An Android USB Plugin Flutter Plugin
+
+This plugin allows Flutter code to detect USB devices connected to your Android device.
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+Add a dependency to your pubspec.yaml
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+dependencies:
+	usb_plugin: ^0.0.1
+```
 
+include the usbserial package at the top of your dart file.
+
+```dart
+import 'package:usb_plugin/usb_plugin.dart';
+```
+
+## Check USB device is connected
+
+To check if any USB device is being connected to Android phone you can use the following function:
+
+```dart
+...
+final _usbPlugin = UsbPlugin();
+...
+onPressed: () async {
+	int? usbState = await _usbPlugin.checkUsbState();
+	print(usbState); // 0-false or 1-true
+}
+...
+```
+
+## Check realtime USB device is connected
+
+We can use Stream to check realtime USB device is connected follow by this 'stateUsbStream':
+
+```dart
+
+    ...
+    final _usbPlugin = UsbPlugin();
+    ...
+
+    _usbPlugin.stateUsbStream().listen( (String data) {
+      print('The state of USB Connected: $data'); // 0-false or 1-true
+    });
+
+```
+
+## FAQ
+
+### You can ask questions through:
+https://github.com/DinhNam99/usb_plugin/issues/
+
+
+## Dependencies
+
+This library depends on:
+
+https://github.com/DinhNam99/usb_plugin
